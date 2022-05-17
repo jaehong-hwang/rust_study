@@ -1,3 +1,13 @@
+struct Todo {
+    subject: String,
+    checked: bool,
+}
+
 fn main() {
-    println!("Hello, world!");
+    let todos: Todo = Todo {
+        subject: String::from("test"),
+        checked: true,
+    };
+
+    println!("subject: {}, checked: {}", todos.subject, todos.checked);
 }
