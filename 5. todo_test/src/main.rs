@@ -4,10 +4,18 @@ struct Todo {
 }
 
 fn main() {
-    let todos: Todo = Todo {
-        subject: String::from("test"),
-        checked: true,
-    };
+    let todos: &[&Todo] = &[
+        &Todo {
+            subject: String::from("test"),
+            checked: true,
+        },
+        &Todo {
+            subject: String::from("test2"),
+            checked: false,
+        },
+    ];
 
-    println!("subject: {}, checked: {}", todos.subject, todos.checked);
+    for todo in todos {
+        println!("subject: {}, checked: {}", todo.subject, todo.checked);
+    }
 }
