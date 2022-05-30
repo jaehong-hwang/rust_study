@@ -1,4 +1,3 @@
-use std::cmp::Ordering;
 use std::io;
 
 struct Todo {
@@ -7,7 +6,7 @@ struct Todo {
 }
 
 fn main() {
-    let todos: &[&Todo] = &[];
+    let mut todos: Vec<Todo> = vec![];
 
     loop {
         println!("Choose menu, 1. add, 2. list, 3. toggle, 4. exit");
@@ -44,10 +43,10 @@ fn main() {
                 };
 
                 if todos.len() > id {
-                    todos[id] = &Todo {
+                    todos[id] = Todo {
                         subject: todos[id].subject,
                         checked: !todos[id].checked,
-                    }
+                    };
                 } else {
                     println!("error")
                 }
