@@ -26,11 +26,21 @@ fn main() {
         println!("You selected: {}", choose);
 
         match choose {
-            1 => {}
+            1 => {
+                println!("Enter Subject: ");
+                let mut subject = String::new();
+                io::stdin().read_line(&mut subject).expect("Failed to read line");
+
+                subject.pop();
+                todos.push(Todo {
+                    subject: subject,
+                    checked: false,
+                });
+            }
             2 => {
                 println!("Current Todo List: ");
-                for todo in todos {
-                    println!("subject: {}, checked: {}", todo.subject, todo.checked);
+                for (key, todo) in todos.iter().enumerate() {
+                    println!("id: {}, subject: {}, checked: {}", key, todo.subject, todo.checked);
                 }
             }
             3 => {
@@ -43,10 +53,7 @@ fn main() {
                 };
 
                 if todos.len() > id {
-                    todos[id] = Todo {
-                        subject: todos[id].subject,
-                        checked: !todos[id].checked,
-                    };
+                    todos[id].checked = !todos[id].checked;
                 } else {
                     println!("error")
                 }
